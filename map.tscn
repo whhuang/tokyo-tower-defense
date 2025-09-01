@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxb5n6mdxvyrn"]
+
+[ext_resource type="PackedScene" uid="uid://624wid0ru6tb" path="res://place_tower.tscn" id="1_c7s6e"]
+[ext_resource type="Script" uid="uid://cu3fa8xum78ab" path="res://map.gd" id="1_e0an3"]
+[ext_resource type="PackedScene" uid="uid://go2dyljb4g54" path="res://invader.tscn" id="2_p5pve"]
+[ext_resource type="Texture2D" uid="uid://3j71mvo0flq7" path="res://Art/Castle.png" id="5_urblq"]
+
+[sub_resource type="Curve2D" id="Curve2D_wijl4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1.6529, 680, 0, 0, 0, 0, 1894.34, 680)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7s6e"]
+size = Vector2(256, 256)
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_e0an3")
+invader_scene = ExtResource("2_p5pve")
+
+[node name="Path" type="Polygon2D" parent="."]
+position = Vector2(0, -8)
+color = Color(0.507314, 0.507314, 0.507314, 0.839216)
+polygon = PackedVector2Array(0, 712, 0, 664, 1800, 664, 1800, 712)
+
+[node name="InvaderPath" type="Path2D" parent="."]
+position = Vector2(1.68777, 0)
+scale = Vector2(1.0211, 1)
+curve = SubResource("Curve2D_wijl4")
+
+[node name="InvaderPathFollow" type="PathFollow2D" parent="InvaderPath"]
+position = Vector2(-1.6529, 680)
+loop = false
+
+[node name="PlaceTower" parent="." instance=ExtResource("1_c7s6e")]
+offset_left = 376.0
+offset_top = 480.0
+offset_right = 476.0
+offset_bottom = 580.0
+
+[node name="PlaceTower2" parent="." instance=ExtResource("1_c7s6e")]
+offset_left = 816.0
+offset_top = 480.0
+offset_right = 916.0
+offset_bottom = 580.0
+
+[node name="PlaceTower3" parent="." instance=ExtResource("1_c7s6e")]
+offset_left = 1224.0
+offset_top = 480.0
+offset_right = 1324.0
+offset_bottom = 580.0
+
+[node name="Castle" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Castle"]
+position = Vector2(1720, 680)
+scale = Vector2(0.796341, 0.796341)
+texture = ExtResource("5_urblq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle"]
+position = Vector2(1808, 680)
+shape = SubResource("RectangleShape2D_c7s6e")
+
+[connection signal="body_entered" from="Castle" to="." method="_on_castle_body_entered"]

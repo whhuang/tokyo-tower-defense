@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Tokyo TD"
+run/main_scene="uid://cfsr4th3hl8l6"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://Art/icon.svg"
+
+[display]
+
+window/size/viewport_width=1800
+window/size/viewport_height=1400
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

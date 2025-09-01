@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://go2dyljb4g54"]
+
+[ext_resource type="Script" uid="uid://b1yipiyjj7msf" path="res://invader.gd" id="1_ctdqs"]
+[ext_resource type="Texture2D" uid="uid://ce6dtgd3lxrmg" path="res://Art/Invader/Invader - walk 1.png" id="2_66p4y"]
+[ext_resource type="Texture2D" uid="uid://mnp14yh86koa" path="res://Art/Invader/Invader - walk 2.png" id="3_uji37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib0xf"]
+radius = 24.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cs7wy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_66p4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uji37")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Invader" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_ctdqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ib0xf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.124998, -0.260932)
+scale = Vector2(0.381148, 0.381147)
+sprite_frames = SubResource("SpriteFrames_cs7wy")
+animation = &"walk"
