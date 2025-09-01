@@ -13,7 +13,7 @@ func _ready() -> void:
 		if child is PlaceTower:
 			child.add_to_group("place_tower")
 			child.set_disabled(true)
-
+# eren
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
