@@ -34,7 +34,7 @@ func _on_cash_timer_timeout() -> void:
 	cash += cash_increment
 
 
-func _on_map_hit() -> void:
+func _on_map_castle_hit() -> void:
 	lives -= 1
 
 

@@ -6,7 +6,6 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
-starting_lives = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -24,5 +23,5 @@ metadata/_edit_use_anchors_ = true
 [node name="HUD" parent="." instance=ExtResource("5_lquwl")]
 
 [connection signal="timeout" from="CashTimer" to="." method="_on_cash_timer_timeout"]
-[connection signal="hit" from="Map" to="." method="_on_map_hit"]
+[connection signal="castle_hit" from="Map" to="." method="_on_map_castle_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
