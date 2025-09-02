@@ -44,11 +44,10 @@ func _on_invader_spawn_timer_timeout() -> void:
 
 
 func _on_castle_area_entered(area: Area2D) -> void:
-	print("castle hit by: ", area)
-	castle_hit.emit()
 	if area.is_in_group("invader"):
+		castle_hit.emit()
 		area.queue_free()
-		print("free")
+
 
 
 func game_over() -> void:

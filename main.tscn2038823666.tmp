@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfsr4th3hl8l6"]
+
+[ext_resource type="Script" uid="uid://dos62qhedim3c" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cxb5n6mdxvyrn" path="res://map.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dirucuwoahiux" path="res://hud.tscn" id="5_lquwl"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+starting_lives = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.204741, 0.462616, 0.185371, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CashTimer" type="Timer" parent="."]
+
+[node name="Map" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="HUD" parent="." instance=ExtResource("5_lquwl")]
+
+[connection signal="timeout" from="CashTimer" to="." method="_on_cash_timer_timeout"]
+[connection signal="hit" from="Map" to="." method="_on_map_hit"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

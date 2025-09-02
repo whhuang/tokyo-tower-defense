@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://mnp14yh86koa" path="res://Art/Invader/Invader - walk 2.png" id="3_uji37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ib0xf"]
-radius = 24.0
+radius = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cs7wy"]
 animations = [{
@@ -30,8 +30,8 @@ script = ExtResource("1_ctdqs")
 shape = SubResource("CircleShape2D_ib0xf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.124998, -0.260932)
-scale = Vector2(0.381148, 0.381147)
+position = Vector2(-1.209, 2.98023e-08)
+scale = Vector2(0.385018, 0.381147)
 sprite_frames = SubResource("SpriteFrames_cs7wy")
 animation = &"walk"
 
