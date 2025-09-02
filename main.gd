@@ -1,8 +1,8 @@
 extends Node
 
 @export var starting_lives = 20
-@export var starting_cash = 10
-@export var cash_increment = 10
+@export var starting_cash = 100
+@export var cash_increment = 5
 var game_in_progress
 var lives
 var cash

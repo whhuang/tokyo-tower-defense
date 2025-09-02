@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://624wid0ru6tb"]
+[gd_scene load_steps=7 format=3 uid="uid://624wid0ru6tb"]
 
 [ext_resource type="Script" uid="uid://o6tis14cfg68" path="res://place_tower.gd" id="1_tfbh3"]
 [ext_resource type="PackedScene" uid="uid://b1c3v7tn4f2wr" path="res://arrow_tower.tscn" id="2_2pa1o"]
 [ext_resource type="Texture2D" uid="uid://pj6do6ap73si" path="res://Art/Arrow Tower.png" id="2_o7yil"]
+[ext_resource type="Texture2D" uid="uid://hx7tchyioqs4" path="res://Art/base.png" id="4_234ho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibqk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_234ho"]
 
 [node name="PlaceTower" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -20,6 +25,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ibqk8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_234ho")
 toggle_mode = true
 
 [node name="TowerSelectPanel" type="Panel" parent="PlaceTowerButton"]
@@ -48,7 +55,7 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 2
+columns = 4
 
 [node name="ArrowTowerSelect" type="Button" parent="PlaceTowerButton/TowerSelectPanel/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
@@ -60,6 +67,13 @@ offset_right = 150.0
 offset_bottom = 150.0
 texture = ExtResource("2_o7yil")
 expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlaceTowerButton"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.195275, 0.19513)
+texture = ExtResource("4_234ho")
 
 [connection signal="toggled" from="PlaceTowerButton" to="." method="_on_place_tower_button_toggled"]
 [connection signal="pressed" from="PlaceTowerButton/TowerSelectPanel/MarginContainer/GridContainer/ArrowTowerSelect" to="." method="_on_arrow_tower_select_pressed"]

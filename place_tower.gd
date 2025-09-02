@@ -4,12 +4,11 @@ class_name PlaceTower
 @export var arrow_tower_scene: PackedScene
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	$PlaceTowerButton/TowerSelectPanel.visible = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -18,8 +17,12 @@ func set_disabled(disabled: bool) -> void:
 	if disabled:
 		$PlaceTowerButton.button_pressed = false
 	$PlaceTowerButton.set_disabled(disabled)
-	for tower in get_tree().get_nodes_in_group("tower"):
-		tower.stop()
+
+	
+	for tower in get_children():
+		if tower.is_in_group("tower"):
+			if disabled:
+				tower.stop()
 
 
 func _on_place_tower_button_toggled(toggled_on: bool) -> void:
@@ -35,16 +38,33 @@ func _input(event):
 
 
 func _on_arrow_tower_select_pressed() -> void:
-	# Become arrow tower
+	var main = get_tree().root.get_node("Main")   
+	var cost = 100
+
+	
+	if main.cash < cost:
+		print("Insufficient coin!")
+		return
+	
+	main.cash -= cost 
 	$PlaceTowerButton.button_pressed = false
 	$PlaceTowerButton.visible = false
+
 	var tower = arrow_tower_scene.instantiate()
 	add_child(tower)
 	tower.add_to_group("tower")
 
+	
+	tower.set_meta("cost", cost)
+
+	if tower.has_node("TowerSelectPanel"):
+		tower.get_node("TowerSelectPanel").visible = false
+
 
 func reset_tower_button() -> void:
 	$PlaceTowerButton.visible = true
-	set_disabled(true)
-	for tower in get_tree().get_nodes_in_group("tower"):
-		tower.queue_free()
+	set_disabled(false) 
+	
+	for tower in get_children():
+		if tower.is_in_group("tower"):
+			tower.queue_free()

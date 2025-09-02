@@ -1,21 +1,33 @@
-extends RigidBody2D
+extends Area2D
 
+@export var damage: int = 25
+@export var speed: float = 1200          # faster arrows
+@export var turn_rate: float = 12.0      # homing turn rate
+var direction: Vector2 = Vector2.ZERO
+var target: Node2D = null                # assigned by tower
 
-# Called when the node enters the scene tree for the first time.
+const LAYER_PROJECTILE := 1 << 2
+const LAYER_ENEMY := 1 << 3
+
 func _ready() -> void:
-	for invader in get_tree().get_nodes_in_group("invader"):
-		invader.invader_hit.connect(_on_invader_hit)
+	visible = true
+	monitoring = true
+	monitorable = true
+	collision_layer = LAYER_PROJECTILE
+	collision_mask = LAYER_ENEMY
+	area_entered.connect(_on_area_entered)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if target != null and is_instance_valid(target):
+		var desired: Vector2 = (target.global_position - global_position).normalized()
+		var t: float = clamp(turn_rate * delta, 0.0, 1.0)
+		direction = direction.lerp(desired, t).normalized()
+		rotation = direction.angle()
+
+	position += direction * speed * delta
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
-
-
-func _on_invader_hit(node: Node2D) -> void:
-	if self == node:
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("invader") and area.has_method("take_damage"):
+		area.take_damage(damage)
 		queue_free()

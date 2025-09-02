@@ -1,9 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dirucuwoahiux"]
+[gd_scene load_steps=9 format=3 uid="uid://dirucuwoahiux"]
 
 [ext_resource type="Script" uid="uid://g6sif34lma5j" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Theme" uid="uid://bkn4bb2bc3bkf" path="res://default.tres" id="2_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://dl5ts6vkoxx21" path="res://Art/Heart.png" id="2_64ctp"]
 [ext_resource type="Texture2D" uid="uid://4jtftk3f425o" path="res://Art/Coin.png" id="4_640wx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_640wx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2258"]
+bg_color = Color(0.724643, 0.724643, 0.724643, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xsix"]
+bg_color = Color(0.724643, 0.724643, 0.724643, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_640wx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -74,13 +100,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 300.0
-offset_right = 150.0
-offset_bottom = 450.0
+offset_left = -275.0
+offset_top = 34.0
+offset_right = 25.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_8sq4i")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_640wx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a2258")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xsix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_640wx")
 text = "Start"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
