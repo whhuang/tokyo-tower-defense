@@ -14,6 +14,10 @@ func _process(delta: float) -> void:
 	pass
 
 
+func stop() -> void:
+	$FiringTimer.stop()
+
+
 func _on_firing_timer_timeout() -> void:
 	var invaders = get_tree().get_nodes_in_group("invader")
 	if invaders.size() > 0:

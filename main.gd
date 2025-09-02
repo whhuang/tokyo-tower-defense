@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 
 
 func new_game() -> void:
+	$Map.reset_game_state()
 	game_in_progress = true
 	lives = starting_lives
 	cash = starting_cash
@@ -44,8 +45,3 @@ func game_over():
 	$HUD.game_over()
 	$Map.game_over()
 	$GameOverTimer.start()
-	
-
-func _on_game_over_timer_timeout() -> void:
-	$HUD.on_game_over_timer_timeout()
-	$Map.on_game_over_timer_timeout()

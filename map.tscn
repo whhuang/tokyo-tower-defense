@@ -17,7 +17,6 @@ size = Vector2(256, 256)
 [node name="Map" type="Node2D"]
 script = ExtResource("1_e0an3")
 invader_scene = ExtResource("2_p5pve")
-default_speed = 500.0
 
 [node name="Path" type="Polygon2D" parent="."]
 position = Vector2(0, -8)

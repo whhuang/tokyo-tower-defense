@@ -6,7 +6,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
-starting_lives = 1
+starting_lives = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -16,5 +16,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 
-func _on_invader_hit() -> void:
-	queue_free()
+func _on_invader_hit(node: Node2D) -> void:
+	if self == node:
+		queue_free()

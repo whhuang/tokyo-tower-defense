@@ -15,7 +15,11 @@ func _process(delta: float) -> void:
 
 
 func set_disabled(disabled: bool) -> void:
+	if disabled:
+		$PlaceTowerButton.button_pressed = false
 	$PlaceTowerButton.set_disabled(disabled)
+	for tower in get_tree().get_nodes_in_group("tower"):
+		tower.stop()
 
 
 func _on_place_tower_button_toggled(toggled_on: bool) -> void:
@@ -37,10 +41,10 @@ func _on_arrow_tower_select_pressed() -> void:
 	var tower = arrow_tower_scene.instantiate()
 	add_child(tower)
 	tower.add_to_group("tower")
-	
+
+
 func reset_tower_button() -> void:
 	$PlaceTowerButton.visible = true
-	$PlaceTowerButton.button_pressed = false
 	set_disabled(true)
 	for tower in get_tree().get_nodes_in_group("tower"):
 		tower.queue_free()
