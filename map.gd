@@ -53,5 +53,11 @@ func _on_castle_area_entered(area: Area2D) -> void:
 
 func game_over() -> void:
 	current_speed = 0
-	enable_place_tower_buttons(false)
 	$InvaderSpawnTimer.stop()
+
+		
+func on_game_over_timer_timeout() -> void:
+	for tower in get_tree().get_nodes_in_group("place_tower"):
+		tower.reset_tower_button()
+	for invader in get_tree().get_nodes_in_group("invader"):
+		invader.queue_free()

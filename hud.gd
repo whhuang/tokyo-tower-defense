@@ -29,9 +29,8 @@ func _on_start_button_pressed() -> void:
 
 func game_over() -> void:
 	$GameOverLabel.show()
-	$GameOverTimer.start()
 
 
-func _on_game_over_timer_timeout() -> void:
+func on_game_over_timer_timeout() -> void:
 	$GameOverLabel.hide()
 	$StartButton.show()

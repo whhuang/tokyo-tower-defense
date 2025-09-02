@@ -36,5 +36,11 @@ func _on_arrow_tower_select_pressed() -> void:
 	$PlaceTowerButton.visible = false
 	var tower = arrow_tower_scene.instantiate()
 	add_child(tower)
+	tower.add_to_group("tower")
 	
-	
+func reset_tower_button() -> void:
+	$PlaceTowerButton.visible = true
+	$PlaceTowerButton.button_pressed = false
+	set_disabled(true)
+	for tower in get_tree().get_nodes_in_group("tower"):
+		tower.queue_free()

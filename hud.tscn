@@ -50,10 +50,6 @@ theme = ExtResource("2_8sq4i")
 text = "10"
 horizontal_alignment = 2
 
-[node name="GameOverTimer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
-
 [node name="GameOverLabel" type="Label" parent="."]
 visible = false
 anchors_preset = 8
@@ -87,5 +83,4 @@ grow_vertical = 2
 theme = ExtResource("2_8sq4i")
 text = "Start"
 
-[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

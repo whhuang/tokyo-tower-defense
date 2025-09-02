@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
+starting_lives = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -18,10 +19,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CashTimer" type="Timer" parent="."]
 
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="Map" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="HUD" parent="." instance=ExtResource("5_lquwl")]
 
 [connection signal="timeout" from="CashTimer" to="." method="_on_cash_timer_timeout"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
 [connection signal="castle_hit" from="Map" to="." method="_on_map_castle_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

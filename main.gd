@@ -43,3 +43,9 @@ func game_over():
 	$CashTimer.stop()
 	$HUD.game_over()
 	$Map.game_over()
+	$GameOverTimer.start()
+	
+
+func _on_game_over_timer_timeout() -> void:
+	$HUD.on_game_over_timer_timeout()
+	$Map.on_game_over_timer_timeout()
