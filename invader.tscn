@@ -21,11 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Invader" type="RigidBody2D"]
-collision_layer = 3
-collision_mask = 3
-mass = 10.0
-gravity_scale = 0.0
+[node name="Invader" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
 script = ExtResource("1_ctdqs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,3 +34,5 @@ position = Vector2(0.124998, -0.260932)
 scale = Vector2(0.381148, 0.381147)
 sprite_frames = SubResource("SpriteFrames_cs7wy")
 animation = &"walk"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

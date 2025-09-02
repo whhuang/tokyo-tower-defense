@@ -28,10 +28,6 @@ position = Vector2(1.68777, 0)
 scale = Vector2(1.0211, 1)
 curve = SubResource("Curve2D_wijl4")
 
-[node name="InvaderPathFollow" type="PathFollow2D" parent="InvaderPath"]
-position = Vector2(-1.6529, 680)
-loop = false
-
 [node name="PlaceTower" parent="." instance=ExtResource("1_c7s6e")]
 offset_left = 376.0
 offset_top = 480.0
@@ -51,8 +47,8 @@ offset_right = 1324.0
 offset_bottom = 580.0
 
 [node name="Castle" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 2
+collision_layer = 2
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Castle"]
 position = Vector2(1720, 680)
@@ -63,4 +59,8 @@ texture = ExtResource("5_urblq")
 position = Vector2(1808, 680)
 shape = SubResource("RectangleShape2D_c7s6e")
 
-[connection signal="body_entered" from="Castle" to="." method="_on_castle_body_entered"]
+[node name="InvaderSpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="Castle" to="." method="_on_castle_area_entered"]
+[connection signal="timeout" from="InvaderSpawnTimer" to="." method="_on_invader_spawn_timer_timeout"]

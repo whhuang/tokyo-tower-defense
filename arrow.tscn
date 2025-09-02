@@ -8,6 +8,8 @@ a = Vector2(0, -40)
 b = Vector2(0, 40)
 
 [node name="Arrow" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 4
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_2ndhl")
@@ -22,5 +24,4 @@ texture = ExtResource("1_l5ahi")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
